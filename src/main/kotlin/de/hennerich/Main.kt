@@ -1,5 +1,15 @@
+package de.hennerich
+
+import de.hennerich.algorithm.DepthSearch
+import de.hennerich.presentation.MazeBuilder
+
+
+/**
+ * Main method that will be executed
+ */
 fun main() {
     val mazeBuilder = MazeBuilder()
+    val depthSearch = DepthSearch()
 
 
     val mazeStr = """
@@ -15,4 +25,8 @@ fun main() {
     """.trimIndent()
     val maze = mazeBuilder.buildMaze(mazeStr)
     mazeBuilder.printMaze(maze)
+    if(depthSearch.depthSearch(maze, mazeBuilder.findStart(maze)))
+        mazeBuilder.printMaze(maze)
+    else
+        println("Keine Lösung Möglich!")
 }
