@@ -4,7 +4,7 @@ import de.hennerich.presentation.Position
 
 class DepthSearch {
 
-    val directions = listOf(
+    private val directions = listOf(
         Position(1,0),
         Position(-1,0),
         Position(0,1),

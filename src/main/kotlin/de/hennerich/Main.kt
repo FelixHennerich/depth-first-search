@@ -1,5 +1,6 @@
 package de.hennerich
 
+import de.hennerich.algorithm.BreadthSearch
 import de.hennerich.algorithm.DepthSearch
 import de.hennerich.presentation.MazeBuilder
 
@@ -10,22 +11,42 @@ import de.hennerich.presentation.MazeBuilder
 fun main() {
     val mazeBuilder = MazeBuilder()
     val depthSearch = DepthSearch()
+    val breadthSearch = BreadthSearch()
 
 
     val mazeStr = """
-        WWWsWWWWWWWWWWWWW
-        W     W W    W  W
-        W WWWWW W WWWWW W
-        W       W       W
-        W W W WWWWW WWWWW
-        W W W W   W     W
-        W W WWW W WWW WWW
-        W W     W       W
-        WWWWWWWWWWWWWdWWW
+        WWWWWWWWWWWWWWWWWWWWWW
+        s       W    W  W    W
+        W WWWWW W WWWWW W WWWW
+        W       W       W   WW
+        W W W WWWWW WWWWW W WW
+        W W W W   W     W   WW
+        W W WWW W WWW WWW W WW
+        W W                 WW
+        WWWWWWWWWWWWWWWWdWWWWW
     """.trimIndent()
-    val maze = mazeBuilder.buildMaze(mazeStr)
+
+    val mazeStr2 = """
+        WWWWWWWWWWWWWWWWWWWWWW
+        W                    W
+        W        WWWWW       W
+        W   s    W           W
+        W        W           W
+        W        W           W
+        W      WWW      d    W
+        W                    W
+        WWWWWWWWWWWWWWWWWWWWWW
+    """.trimIndent()
+    /*val maze = mazeBuilder.buildMaze(mazeStr)
     mazeBuilder.printMaze(maze)
     if(depthSearch.depthSearch(maze, mazeBuilder.findStart(maze)))
+        mazeBuilder.printMaze(maze)
+    else
+        println("Keine Lösung Möglich!")*/
+
+    val maze = mazeBuilder.buildMaze(mazeStr2)
+    mazeBuilder.printMaze(maze)
+    if(breadthSearch.breadthFirstSearch(maze, mazeBuilder.findStart(maze)))
         mazeBuilder.printMaze(maze)
     else
         println("Keine Lösung Möglich!")
