@@ -28,13 +28,13 @@ fun main() {
 
     val mazeStr2 = """
         WWWWWWWWWWWWWWWWWWWWWW
-        W                    W
+        W          W         W
         W        WWWWW       W
         W   s    W           W
         W        W           W
         W        W           W
         W      WWW      d    W
-        W                    W
+        W       W            W
         WWWWWWWWWWWWWWWWWWWWWW
     """.trimIndent()
     /*val maze = mazeBuilder.buildMaze(mazeStr)

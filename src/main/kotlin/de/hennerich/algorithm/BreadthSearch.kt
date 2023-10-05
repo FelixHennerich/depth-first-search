@@ -1,6 +1,7 @@
 package de.hennerich.algorithm
 
 import de.hennerich.presentation.Position
+import java.util.*
 
 class BreadthSearch {
 
@@ -17,6 +18,7 @@ class BreadthSearch {
         val previous = mutableMapOf<Position, Position>()
         val frontier = mutableListOf(start)
         maze[start.row][start.col] = ' '
+        println(start)
 
         while(frontier.size > 0){
             val node = frontier.removeAt(0)
@@ -27,8 +29,7 @@ class BreadthSearch {
                 if(newrow !in (0 until rows) ||
                     newcol !in (0 until cols) ||
                     maze[newrow][newcol] == '.' ||
-                    maze[newrow][newcol] == 'W'
-                )
+                    maze[newrow][newcol] == 'W')
                     continue
 
                 println(" $newrow $newcol")
@@ -38,6 +39,7 @@ class BreadthSearch {
                     var back: Position? = node
                     println(back)
                     while(back !== null){
+                        //println("Back $back")
                         cnt++
                         maze[back.row][back.col] = 'x'
                         back = previous[back]
@@ -55,5 +57,4 @@ class BreadthSearch {
         }
         return false
     }
-
 }
